@@ -170,7 +170,7 @@ final class Storage implements Closeable {
     // When a resource scope is closed. It is no longer alive
     // and subsequent operations on resources associated with that scope will fail
     @Override
-    public void close() throws IOException {
+    public void close() {
         resourceScope.close();
     }
 

@@ -30,12 +30,12 @@ public class SegmentDao implements Dao<MemorySegment, BaseEntry<MemorySegment>> 
     }
 
     @Override
-    public Iterator<BaseEntry<MemorySegment>> get(MemorySegment from, MemorySegment to) throws IOException {
+    public Iterator<BaseEntry<MemorySegment>> get(MemorySegment from, MemorySegment to) {
         return new FilterTombstonesIterator(new MergeIterator(listOfIterators(from, to)));
     }
 
     @Override
-    public BaseEntry<MemorySegment> get(MemorySegment key) throws IOException {
+    public BaseEntry<MemorySegment> get(MemorySegment key) {
         BaseEntry<MemorySegment> entry = inMemory.get(key);
         if (entry == null) {
             return storage.get(key);
